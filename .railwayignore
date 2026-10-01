@@ -1,0 +1,27 @@
+# Python environment
+.venv/
+.venv/**
+venv/
+venv/**
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local environment files
+.env
+.env.*
+
+# Editor/cache files
+.vscode/
+.idea/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Git metadata
+.git/
+.git/**
