@@ -10,3 +10,4 @@ langchain-groq
 sentence-transformers
 pypdf
 chromadb
+torch

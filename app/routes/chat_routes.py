@@ -1,8 +1,22 @@
 from fastapi import APIRouter
-from app.models.chat_model import ChatRequest
-from app.controllers.chat_controller import chat, chat_stream
 
-router = APIRouter()
+from app.controllers.chat_controller import handle_chat, handle_chat_stream
+from app.models.chat_model import ChatRequest, ChatResponse
 
-router.add_api_route("/chat", chat, methods=["POST"])
-router.add_api_route("/chat/stream", chat_stream, methods=["POST"])
+
+router = APIRouter(prefix="/api", tags=["chat"])
+
+
+@router.post("/chat", response_model=ChatResponse)
+def chat(request: ChatRequest):
+    return handle_chat(request)
+
+
+@router.post("/chat/stream")
+def chat_stream(request: ChatRequest):
+    return handle_chat_stream(request)
+
+
+@router.get("/health")
+def health():
+    return {"status": "ok"}
